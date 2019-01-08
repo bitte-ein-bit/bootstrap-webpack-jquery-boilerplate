@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{e6Wu:function(n,c,i){"use strict";i.r(c),function(n){i("SYky"),i("hZTp");n("#alert").click(function(){alert("jQuery works!")})}.call(this,i("EVdn"))},hZTp:function(n,c,i){}},[["e6Wu",1,2]]]);
