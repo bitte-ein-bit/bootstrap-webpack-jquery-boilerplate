@@ -104,6 +104,7 @@ const config = {
   ],
   devServer: {
     contentBase: path.join(__dirname, 'src'),
+    https: true,
   },
   optimization: {
     runtimeChunk: 'single',
