@@ -19,8 +19,24 @@ const arr = [
   {id: "131", bezeichnung: "EC - Jungschar Jungs Pfuhl", sortkey: "135", color: "black"},
 ];
 
+function updateLink() {
+  var ids = [];
+  $('.cal:checkbox:checked').each(function() {
+    ids.push($(this).val())
+  });
+  var link = "lkg-pfuhl.church.tools/?q=churchcal/ical";
+  if (ids.length > 0) {
+    link = "lkg-pfuhl.church.tools/?q=churchcal/ical&category_id=" + ids.join(',') + "&category_select=" + ids.join(',');
+  }
+  $('#icallink').html("<a href=\"https://" + link + "\">iCal-Link</a>");
+  $('#icaltext').text("https://" + link);
+
+  $('#webcallink').html("<a href=\"webcal://" + link + "\">WebCal-Link</a>");
+}
+
 $(document).ready(function() {
   console.log("ready, loading calls");
+  updateLink();
 
   $(arr).each(function() {
     var sel = $('<div>').appendTo('#callist');
@@ -28,14 +44,6 @@ $(document).ready(function() {
     sel.append(" " + this.bezeichnung);
   });
   $('.cal').change(() => {
-    var ids = [];
-    $('.cal:checkbox:checked').each(function() {
-      ids.push($(this).val())
-    });
-    var link = "lkg-pfuhl.church.tools/?q=churchcal/ical&title=LKG-Pfuhl&category_id=" + ids.join(',') + "&category_select=" + ids.join(',')
-    $('#icallink').html("<a href=\"https://" + link + "\">iCal-Link</a>");
-    $('#icaltext').text("https://" + link);
-
-    $('#webcallink').html("<a href=\"https://" + link + "\">WebCal-Link</a>");
+    updateLink();
   });
 });
